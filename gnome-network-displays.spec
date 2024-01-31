@@ -1,14 +1,16 @@
-# TODO: unpackaged firewalld file:
+# TODO:
+# - use gtk4-update-icon-cache
+# - unpackaged firewalld file:
 #        /usr/lib/firewalld/zones/P2P-WiFi-Display.xml
 Summary:	Experimental implementation of Wi-Fi Display (Miracast)
 Summary(pl.UTF-8):	Eksperymentalna implementacja Wi-Fi Display (Miracast)
 Name:		gnome-network-displays
-Version:	0.91.0
+Version:	0.92.1
 Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-network-displays/0.91/%{name}-%{version}.tar.xz
-# Source0-md5:	f5bf6cf260173d61a559439beceefaa8
+Source0:	https://download.gnome.org/sources/gnome-network-displays/0.92/%{name}-%{version}.tar.xz
+# Source0-md5:	f9b80db27b1e534e5435767b68ccace1
 Patch0:		%{name}-label.patch
 URL:		https://gitlab.gnome.org/GNOME/gnome-network-displays
 BuildRequires:	NetworkManager-devel >= 1.15
@@ -16,9 +18,14 @@ BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gstreamer-devel >= 1.14
 BuildRequires:	gstreamer-plugins-base-devel >= 1.14
 BuildRequires:	gstreamer-rtsp-server-devel >= 1.14
-BuildRequires:	gtk+3-devel >= 3.22
-BuildRequires:	meson >= 0.46.1
+BuildRequires:	gtk4-devel >= 4.0
+BuildRequires:	json-glib-devel >= 1.0
+BuildRequires:	libadwaita-devel >= 1.0.0
+BuildRequires:	libportal-gtk4-devel >= 0.7
+BuildRequires:	libsoup3-devel >= 3.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
+BuildRequires:	protobuf-c-devel >= 1.0.0
 BuildRequires:	pulseaudio-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -29,8 +36,13 @@ Requires:	glib2 >= 1:2.50
 Requires:	gstreamer >= 1.14
 Requires:	gstreamer-plugins-base >= 1.14
 Requires:	gstreamer-rtsp-server >= 1.14
-Requires:	gtk+3 >= 3.22
+Requires:	gtk4 >= 4.0
 Requires:	hicolor-icon-theme
+Requires:	json-glib >= 1.0
+Requires:	libadwaita >= 1.0.0
+Requires:	libportal-gtk4 >= 0.7
+Requires:	libsoup3 >= 3.0
+Requires:	protobuf-c >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -71,18 +83,15 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%glib_compile_schemas
 %update_icon_cache hicolor
 
 %postun
-%glib_compile_schemas
 %update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/gnome-network-displays
-%{_datadir}/glib-2.0/schemas/org.gnome.NetworkDisplays.gschema.xml
 %{_datadir}/metainfo/org.gnome.NetworkDisplays.appdata.xml
 %{_desktopdir}/org.gnome.NetworkDisplays.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.NetworkDisplays.svg
