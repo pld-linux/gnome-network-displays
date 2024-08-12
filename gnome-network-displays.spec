@@ -5,12 +5,12 @@
 Summary:	Experimental implementation of Wi-Fi Display (Miracast)
 Summary(pl.UTF-8):	Eksperymentalna implementacja Wi-Fi Display (Miracast)
 Name:		gnome-network-displays
-Version:	0.92.2
+Version:	0.93.0
 Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-network-displays/0.92/%{name}-%{version}.tar.xz
-# Source0-md5:	8ad252589def42ba398b11dd1641d915
+Source0:	https://download.gnome.org/sources/gnome-network-displays/0.93/%{name}-%{version}.tar.xz
+# Source0-md5:	5f58ac9e79b8a74fc8c65f033778e7f3
 Patch0:		%{name}-label.patch
 URL:		https://gitlab.gnome.org/GNOME/gnome-network-displays
 BuildRequires:	NetworkManager-devel >= 1.15
