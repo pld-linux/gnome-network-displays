@@ -5,12 +5,12 @@
 Summary:	Experimental implementation of Wi-Fi Display (Miracast)
 Summary(pl.UTF-8):	Eksperymentalna implementacja Wi-Fi Display (Miracast)
 Name:		gnome-network-displays
-Version:	0.94.0
+Version:	0.96.0
 Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-network-displays/0.94/%{name}-%{version}.tar.xz
-# Source0-md5:	176153cb6e026ace42792fb1a58c806e
+Source0:	https://download.gnome.org/sources/gnome-network-displays/0.96/%{name}-%{version}.tar.xz
+# Source0-md5:	6a16230bc836212b1ad1cdb19f11dda5
 URL:		https://gitlab.gnome.org/GNOME/gnome-network-displays
 BuildRequires:	NetworkManager-devel >= 1.15
 BuildRequires:	glib2-devel >= 1:2.50
@@ -26,6 +26,7 @@ BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	protobuf-c-devel >= 1.0.0
 BuildRequires:	pulseaudio-devel
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.50
@@ -66,14 +67,14 @@ większości konfiguracji.
 %setup -q
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang %{name}
 
