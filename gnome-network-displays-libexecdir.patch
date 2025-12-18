@@ -1,0 +1,11 @@
+--- gnome-network-displays-0.98.0/src/meson.build.orig	2025-12-15 00:58:20.000000000 +0100
++++ gnome-network-displays-0.98.0/src/meson.build	2025-12-18 21:48:05.511559815 +0100
+@@ -140,7 +140,7 @@ if build_daemon
+     dependencies: gnome_nd_stream_deps,
+     install: true,
+     link_with: [wfd_server, cc_cast_channel],
+-    install_dir: join_paths(get_option('prefix'), 'libexec')
++    install_dir: get_option('libexecdir')
+   )
+ endif
+ 
